@@ -3,9 +3,7 @@ package com.example.channel_flutter_example
 import android.widget.Toast
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import java.time.Duration
 
 
 class MainActivity : FlutterActivity() {
@@ -61,6 +59,13 @@ class MainActivity : FlutterActivity() {
                         result.success("map received by native:${message}")
                     }
 
+
+                    "getListFromDart" -> {
+                         // Retrieve the list from Flutter
+                        val message = call.arguments as List<String>?
+                        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_SHORT).show()
+                        result.success(message)
+                    }
 
 
 

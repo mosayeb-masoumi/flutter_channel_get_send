@@ -124,6 +124,24 @@ class _HomePageState extends State<HomePage> {
                 });
               }, child: Text("get native list")),
 
+              Text(list.isNotEmpty?"${list[0]} - ${list[1]}":""),
+
+
+              /********************* send List *********************/
+
+              ElevatedButton(onPressed: () async {
+
+                List<String> mylist = ["item1","item2", "item3"];
+                var resultOfSendList = await sendListToNativeMethod(mylist);
+
+                for (var item in resultOfSendList) {
+                  list.add(item.toString());
+                }
+
+                setState(() {
+                });
+              }, child: Text("send native list")),
+
               Text(list.isNotEmpty?"${list[0]} - ${list[1]}":"")
 
             ],
@@ -132,5 +150,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
 
 }

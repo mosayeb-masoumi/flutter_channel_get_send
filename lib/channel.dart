@@ -85,3 +85,15 @@ Future<dynamic> callListNativeMethod() async {
   }
 }
 
+
+Future<dynamic> sendListToNativeMethod(List<String> list) async {
+  try {
+   dynamic result = await platform.invokeMethod('getListFromDart' , list);
+  return result;
+  } catch (e) {
+    print('Error calling native method: $e');
+    return "";
+  }
+}
+
+
